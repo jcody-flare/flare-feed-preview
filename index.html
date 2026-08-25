@@ -372,7 +372,8 @@ LeadIQ arrives already loaded with the prospects in a bank's own market, and use
     var dragging = false;
     prog.addEventListener('pointerdown', function (e) {
       e.stopPropagation(); dragging = true; prog.classList.add('drag');
-      prog.setPointerCapture(e.pointerId); seekTo(e.clientX);
+      seekTo(e.clientX);
+      try { prog.setPointerCapture(e.pointerId); } catch (err) {}
     });
     prog.addEventListener('pointermove', function (e) { if (dragging) seekTo(e.clientX); });
     prog.addEventListener('pointerup', function (e) {
